@@ -1,0 +1,19 @@
+﻿@model List<Infrastructure.DTO.TableDto>
+@{ ViewData["Title"] = "ChooseTable"; }
+
+
+<h1>جدول ها </h1>
+
+@foreach (var item in Model)
+{
+<div class="card mb-3 ">
+    <div class="card-body" style="background-color:aqua">
+        <h5 class="card-title">نام جدول : @(item.TableName) </h5>
+    </div>
+    <div class="card-footer font-weight-bold text-black-50">
+        <a asp-controller="AddValue" asp-action="SeedData" asp-route-id=@item.Id class="btn btn-warning"> اضافه کردن داده</a>
+        <a asp-controller="ShowInfo" asp-action="ShowData" asp-route-id=@item.Id class="btn btn-success"> نمایش داده های جدول</a>
+    </div>
+
+
+</div>}

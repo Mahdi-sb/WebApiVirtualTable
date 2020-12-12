@@ -1,0 +1,64 @@
+﻿@model List<Infrastructure.DTO.ValueDto>
+@{ ViewData["Title"] = "ShowData";
+    var column = ViewData["column"] as List<string>;
+    int xt = column.Count;
+    int ct = 0; }
+<head>
+    <style>
+        table, td, th {
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 15px;
+        }
+
+        th {
+            background-color: dodgerblue;
+            color: white;
+        }
+
+        td {
+            background-color: antiquewhite;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    @if (column.Count != 0)
+    {
+<table>
+    <tr>
+        @foreach (var item1 in column)
+        {
+
+
+<th>@item1</th>
+}
+    </tr>
+
+    @for (int i = 0; i < Model.Count / column.Count; i++)
+    {
+
+<tr>
+    @for (int j = ct; j < xt; j++)
+    {
+<td>@Model[j].FieldValue</td>
+}
+</tr>
+ct += column.Count;
+xt += column.Count;
+}
+
+</table> }
+else
+{
+<h1>دیتایی در این جدول وجود ندارد</h1>}
+</body>
